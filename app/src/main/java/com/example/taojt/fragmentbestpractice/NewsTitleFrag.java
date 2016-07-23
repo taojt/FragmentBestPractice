@@ -24,10 +24,10 @@ public class NewsTitleFrag extends Fragment {
     private boolean isTwoPane;
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
         newsList = getNews();
-        adapter = new NewsAdapter(context, R.layout.news_item,newsList);
+        adapter = new NewsAdapter(activity, R.layout.news_item,newsList);
 
     }
 
@@ -75,7 +75,7 @@ public class NewsTitleFrag extends Fragment {
         News news3 = new News("菲律宾总统再发声:希望中国帮助菲发展经济", "菲律宾单方面发起的所谓“南海仲裁案”公布结果后，菲律宾表示出愿与中国加强合作、通过对话解决争端的意愿，据《菲律宾商报》7月23日报道，菲律宾总统杜特尔特22日称，希望中国帮助菲律宾经济发展。\n" +
                 "\n" +
                 "　　报道称，菲律宾单方面发起的所谓“南海仲裁案”公布结果后，杜特尔特在菲律宾马银兰佬省武努安社视察生物质发电厂期间说道：“如果能够与中国解决争端，我们将有许多益处。”");
-
+        newsList.add(news3);
         return newsList;
 
     }
