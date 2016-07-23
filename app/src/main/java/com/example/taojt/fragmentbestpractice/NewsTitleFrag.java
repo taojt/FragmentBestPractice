@@ -28,42 +28,39 @@ public class NewsTitleFrag extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         newsList = getNews();
-        adapter = new NewsAdapter(activity, R.layout.news_item,newsList);
+        adapter = new NewsAdapter(activity, R.layout.news_item, newsList);
 
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.news_title_frag,container,false);
+        View view = inflater.inflate(R.layout.news_title_frag, container, false);
         newsTitleListView = (ListView) view.findViewById(R.id.news_title_list_view);
         newsTitleListView.setAdapter(adapter);
         newsTitleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 News news = newsList.get(i);
-                if(isTwoPane){
-                    Log.i("Haha","1111");
+                if (isTwoPane) {
                     NewsContentFrag newsContentFrag = (NewsContentFrag) getFragmentManager().findFragmentById(R.id.news_content_fragment);
-                    newsContentFrag.refresh(news.getTitle(),news.getContent());
+                    newsContentFrag.refresh(news.getTitle(), news.getContent());
 
-                }else {
+                } else {
                     NewsContentActivity.actionStart(getActivity(), news.getTitle(), news.getContent());
                 }
             }
         });
         return view;
-}
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if(getActivity().findViewById(R.id.news_content_layout)!=null){
+        if (getActivity().findViewById(R.id.news_content_layout) != null) {
             isTwoPane = true;
-            Log.i("Haha","2222");
-        }else {
-            isTwoPane = true;
-            Log.i("Haha","3333");
+        } else {
+            isTwoPane = false;
         }
     }
 
