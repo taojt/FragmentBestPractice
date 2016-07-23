@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ public class NewsTitleFrag extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 News news = newsList.get(i);
                 if(isTwoPane){
+                    Log.i("Haha","1111");
                     NewsContentFrag newsContentFrag = (NewsContentFrag) getFragmentManager().findFragmentById(R.id.news_content_fragment);
                     newsContentFrag.refresh(news.getTitle(),news.getContent());
 
@@ -58,8 +60,10 @@ public class NewsTitleFrag extends Fragment {
         super.onActivityCreated(savedInstanceState);
         if(getActivity().findViewById(R.id.news_content_layout)!=null){
             isTwoPane = true;
+            Log.i("Haha","2222");
         }else {
-            isTwoPane = false;
+            isTwoPane = true;
+            Log.i("Haha","3333");
         }
     }
 
